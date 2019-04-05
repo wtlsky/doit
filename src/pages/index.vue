@@ -5,17 +5,17 @@
 <script>
 export default {
   components: {},
-  data() {
+  data () {
     return {};
   },
   methods: {},
-  created() {}
+  created () { }
 };
 </script>
 <style lang='scss' scoped>
-.index{
+.index {
   cursor: pointer;
-  &:hover{
+  &:hover {
     color: #d33332;
   }
 }

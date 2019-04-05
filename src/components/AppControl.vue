@@ -2,22 +2,49 @@
   <div class="app-control">
     <div class="iconfont icon-code logo"></div>
     <div class="control-bar">
-      <div class="btn iconfont icon-mini" title="迷你模式"></div>
-      <div class="btn iconfont icon-hide" title="最小化"></div>
-      <div class="btn iconfont icon-max" title="最大化"></div>
-      <div class="btn iconfont icon-close" title="关闭"></div>
+      <div class="btn iconfont icon-mini"
+           title="迷你模式"></div>
+      <div class="btn iconfont icon-hide"
+           title="最小化"
+           @click="controlWin('MIN')"></div>
+      <div class="btn iconfont"
+           :class="[isMaximize ? 'icon-normal' : 'icon-max']"
+           :title="isMaximize ? '还原' : '最大化'"
+           @click="controlWin('MAX')"></div>
+      <div class="btn iconfont icon-close"
+           title="关闭"></div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
-  data() {
-    return {};
+  data () {
+    return {
+      isMaximize: false
+    };
   },
-  methods: {},
-  created() {}
+  methods: {
+    /**
+     * 控制窗口大小
+     * @param type {string} 动作 - MINI,MAX,MIN,CLOSE
+     */
+    controlWin (type) {
+      let win = this.$remote.getCurrentWindow();
+      if (type === "MIN") {
+        win.minimize();
+      }
+      if (type === "MAX") {
+        if (this.isMaximize) {
+          win.unmaximize();
+          this.isMaximize = false;
+        } else {
+          win.maximize();
+          this.isMaximize = true;
+        }
+      }
+    }
+  }
 };
 </script>
 <style lang='scss' scoped>
@@ -34,7 +61,7 @@ export default {
   -webkit-app-region: drag;
   font-size: 30px;
   color: #fff;
-  flex:1;
+  flex: 1;
 }
 .btn {
   display: inline-block;
