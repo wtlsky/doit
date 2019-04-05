@@ -12,7 +12,8 @@
            :title="isMaximize ? '还原' : '最大化'"
            @click="controlWin('MAX')"></div>
       <div class="btn iconfont icon-close"
-           title="关闭"></div>
+           title="关闭"
+           @click="controlWin('CLOSE')"></div>
     </div>
   </div>
 </template>
@@ -42,6 +43,9 @@ export default {
           win.maximize();
           this.isMaximize = true;
         }
+      }
+      if(type === 'CLOSE') {
+        win.close()
       }
     }
   }
