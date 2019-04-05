@@ -44,7 +44,7 @@ export default {
           this.isMaximize = true;
         }
       }
-      if(type === 'CLOSE') {
+      if (type === 'CLOSE') {
         win.close()
       }
     }
