@@ -1,10 +1,16 @@
 <template>
-  <div class="index">index</div>
+  <div class="index">
+    <week-date-picker></week-date-picker>
+    <el-button type='primary'>hello</el-button>
+  </div>
 </template>
 
 <script>
+import WeekDatePicker from '@/components/WeekDatePicker'
 export default {
-  components: {},
+  components: {
+    WeekDatePicker
+  },
   data () {
     return {};
   },
@@ -13,10 +19,4 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.index {
-  cursor: pointer;
-  &:hover {
-    color: #d33332;
-  }
-}
 </style>

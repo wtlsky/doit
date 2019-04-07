@@ -21,6 +21,11 @@ export default {
   margin: 0;
   padding: 0;
 }
+@media screen and (min-width: 200px) {
+  html {
+    font-size: 100px;
+  }
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -13,9 +13,14 @@ let win
 
 // Standard scheme must be registered before the app is ready
 protocol.registerStandardSchemes(['app'], { secure: true })
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({ minWidth: 1000, minHeight:670, width: 1000, height: 670, frame:false})
+  win = new BrowserWindow({
+    width: 280,
+    height: 670,
+    frame: false,
+    alwaysOnTop: true
+  })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

@@ -1,6 +1,7 @@
 <template>
   <div class="app-control">
-    <div class="iconfont icon-code logo"></div>
+    <div class="logo">Now</div>
+    <!-- <div class="iconfont icon-code logo"></div> -->
     <div class="control-bar">
       <div class="btn iconfont icon-mini"
            title="迷你模式"></div>
@@ -53,26 +54,28 @@ export default {
 </script>
 <style lang='scss' scoped>
 .app-control {
-  background: #36c2cf;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 15px;
+  background: #026aee;
+  height: 0.3rem;
+  padding: 0 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+.control-bar {
+  display: flex;
+}
 .logo {
   -webkit-app-region: drag;
-  font-size: 30px;
   color: #fff;
   flex: 1;
+  font-size: 0.14rem;
 }
 .btn {
   display: inline-block;
   color: #fff;
   opacity: 0.8;
   margin: 0 5px;
-  font-size: 18px;
+  font-size: 14px;
   &:hover {
     opacity: 1;
     cursor: pointer;
