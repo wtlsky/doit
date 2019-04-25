@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <app-control></app-control>
-    <router-view />
+    <App-control></App-control>
+    <div class="router-view">
+      <Router-view />
+    </div>
+    <Tab-bar></Tab-bar>
   </div>
 </template>
 
 <script>
 import AppControl from '@/components/AppControl.vue'
-
+import TabBar from '@/components/TabBar.vue'
 export default {
   name: "app",
   components: {
-    AppControl
+    AppControl,
+    TabBar
   }
 };
 </script>
@@ -30,5 +34,14 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.router-view {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  bottom: 60px;
+  left: 0;
+  background: #eee;
+  overflow: hidden;
 }
 </style>
