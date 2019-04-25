@@ -1,5 +1,6 @@
 <template>
   <div class='date-picker'>
+    {{current.format('YYYY-MM-DD')}}
     <div class="days-row">
       <div class="day">日</div>
       <div class="day">一</div>
@@ -11,10 +12,16 @@
     </div>
     <div class="week-container">
       <div class="date"
-           :class="{disable: date.disable}"
-           v-for="(date,idx) in days"
-           :key="idx">
-        {{date.date | padZero}}
+           v-for="date in smallDays"
+           :key="date">{{date}}</div>
+    </div>
+    <div class="week-container">
+      <div class="date"
+           :class="{disable: day.disable, active: day.date === date && !day.disable}"
+           v-for="(day,idx) in days"
+           :key="idx"
+           @click="setDate(day)">
+        {{day.date | padZero}}
       </div>
     </div>
   </div>
@@ -28,12 +35,18 @@ export default {
       year: 2019,
       month: 2,
       date: 5,
-      current: ''
     };
   },
   filters: {
     padZero (val) {
       return val < 10 ? `0${val}` : val
+    }
+  },
+  methods: {
+    setDate (date) {
+      if (!date.disable) {
+        this.date = date.date
+      }
     }
   },
   computed: {
@@ -67,6 +80,20 @@ export default {
         }
       }
       return res
+    },
+    smallDays () {
+      let current = this.current
+      let date = current.date()
+      let day = current.day()
+      let res = []
+      for (let i = day; i > 0; i--) {
+        res.unshift(date -= 1)
+      }
+      console.log({ date, day })
+      return res
+    },
+    current () {
+      return moment().year(this.year).month(this.month).date(this.date)
     }
   }
 }
@@ -108,6 +135,10 @@ export default {
       background: #026aee;
       color: #fff;
       cursor: pointer;
+    }
+    &.active {
+      background: #d33332;
+      color: #fff;
     }
     &.disable {
       color: #ccc;
